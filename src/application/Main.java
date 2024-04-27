@@ -2,6 +2,7 @@ package application;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 import pane.RootPane;
 
@@ -14,9 +15,11 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         // TODO: FILL CODE HERE
-        Scene scene = new Scene(RootPane.getRootPane(),430,932);
+        Scene scene = new Scene(RootPane.getRootPane());
+        stage.setFullScreen(true);
+        stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.setScene(scene);
-        stage.setTitle("Let's Read");
+        stage.setTitle("LG-QUIZ");
         stage.setResizable(false);
         stage.show();
     }
