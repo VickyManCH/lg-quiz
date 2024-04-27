@@ -35,6 +35,7 @@ public class Goto {
             mediaPlayer.stop();
         }
         setMediaPlayer(musicPath);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
         mediaPlayer.play();
     }
 
