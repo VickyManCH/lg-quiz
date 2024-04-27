@@ -5,6 +5,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
@@ -13,11 +15,27 @@ import pane.NewBookPane;
 import pane.RootPane;
 import pane.SearchPane;
 
+import java.io.File;
+
 public class Goto {
     private static RootPane rootPane;
 
+    private static MediaPlayer mediaPlayer;
+
+    private static void setMediaPlayer(String musicPath){
+        mediaPlayer = new MediaPlayer(new Media(new File(musicPath).toURI().toString()));
+    }
+
     public static void setRootPane(RootPane rootPane) {
         Goto.rootPane = rootPane;
+    }
+
+    public static void music(String musicPath){
+        if(mediaPlayer != null){
+            mediaPlayer.stop();
+        }
+        setMediaPlayer(musicPath);
+        mediaPlayer.play();
     }
 
     public static void clear(){
@@ -28,6 +46,7 @@ public class Goto {
 
     public static void mainPage(){
         clear();
+        music("res/music/oioioi.mp3");
         ScrollPane newScroll = new ScrollPane(BookListPane.getInstance());
         newScroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         newScroll.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -46,6 +65,7 @@ public class Goto {
 
     public static void bookPage(Book book){
         clear();
+        music("res/music/gedagedifnaf.mp3");
         Text name = GetDisplay.name(book,28,336, TextAlignment.CENTER);
         Text author = GetDisplay.author(book,28,336, TextAlignment.CENTER);
         author.setText("By "+author.getText());

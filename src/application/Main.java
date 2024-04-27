@@ -6,6 +6,8 @@ import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 import pane.RootPane;
 
+import java.io.File;
+
 public class Main extends Application {
 
     public static void main(String[] args) {
