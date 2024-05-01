@@ -2,20 +2,31 @@ package pane;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import utils.Goto;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class RootPane extends VBox {
     private static RootPane instance;
 
     private RootPane() {
         // TODO: FILL CODE HERE
-        setBackground(Background.fill(Color.WHITE));
+        Background bg;
+        try {
+            BackgroundImage bgImg = new BackgroundImage(new Image(new FileInputStream("res/quiz.jpg")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100, 100, true, true, true, true));
+            bg = new Background(bgImg);
+        } catch (FileNotFoundException err) {
+            bg = new Background(new BackgroundFill(Color.WHITE, null, null));
+        }
+        setBackground(bg);
         setAlignment(Pos.TOP_CENTER);
         setSpacing(16);
         setPadding(new Insets(32,0,32,0));

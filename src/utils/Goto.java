@@ -2,6 +2,7 @@ package utils;
 
 import item.Book;
 import javafx.application.Platform;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -12,10 +13,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
-import pane.BookListPane;
-import pane.NewBookPane;
-import pane.RootPane;
-import pane.SearchPane;
+import pane.*;
 
 import java.io.File;
 
@@ -85,15 +83,28 @@ public class Goto {
         rootPane.getChildren().add(new NewBookPane());
     }
 
+    public static void quizPage(){
+        clear();
+    }
+
     public static void titleScreenPage(){
         clear();
-        Button newButton = new Button("Exit");
-        newButton.setBorder(new Border(new BorderStroke(Color.DARKCYAN,BorderStrokeStyle.SOLID,null,new BorderWidths(2))));
-        newButton.setBackground(new Background(new BackgroundFill(Color.WHITE,null,null)));
-        newButton.setTextFill(Color.DARKCYAN);
-        newButton.setPrefWidth(300);
-        newButton.setPrefHeight(400);
-        newButton.setOnMouseClicked(mouseEvent -> Platform.exit());
-        rootPane.getChildren().add(newButton);
+        Button exitButton = new Button("Exit");
+        exitButton.setBorder(new Border(new BorderStroke(Color.DARKCYAN,BorderStrokeStyle.SOLID,null,new BorderWidths(2))));
+        exitButton.setBackground(new Background(new BackgroundFill(Color.WHITE,null,null)));
+        exitButton.setTextFill(Color.DARKCYAN);
+        exitButton.setPrefWidth(300);
+        exitButton.setPrefHeight(100);
+        exitButton.setOnMouseClicked(mouseEvent -> Platform.exit());
+        Button playButton = new Button("Play");
+        playButton.setBorder(new Border(new BorderStroke(Color.DARKCYAN,BorderStrokeStyle.SOLID,null,new BorderWidths(2))));
+        playButton.setBackground(new Background(new BackgroundFill(Color.WHITE,null,null)));
+        playButton.setTextFill(Color.DARKCYAN);
+        playButton.setPrefWidth(300);
+        playButton.setPrefHeight(100);
+        playButton.setOnMouseClicked(mouseEvent -> quizPage());
+        VBox.setMargin(playButton, new Insets(300,0,50,0));
+        rootPane.getChildren().add(playButton);
+        rootPane.getChildren().add(exitButton);
     }
 }
