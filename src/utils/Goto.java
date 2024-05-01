@@ -1,6 +1,8 @@
 package utils;
 
 import item.Book;
+import javafx.application.Platform;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
@@ -81,5 +83,17 @@ public class Goto {
         clear();
         rootPane.getChildren().add(backToMainPageButton());
         rootPane.getChildren().add(new NewBookPane());
+    }
+
+    public static void titleScreenPage(){
+        clear();
+        Button newButton = new Button("Exit");
+        newButton.setBorder(new Border(new BorderStroke(Color.DARKCYAN,BorderStrokeStyle.SOLID,null,new BorderWidths(2))));
+        newButton.setBackground(new Background(new BackgroundFill(Color.WHITE,null,null)));
+        newButton.setTextFill(Color.DARKCYAN);
+        newButton.setPrefWidth(300);
+        newButton.setPrefHeight(400);
+        newButton.setOnMouseClicked(mouseEvent -> Platform.exit());
+        rootPane.getChildren().add(newButton);
     }
 }
