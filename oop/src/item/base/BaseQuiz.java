@@ -30,6 +30,10 @@ public abstract class BaseQuiz implements Hint {
     public abstract String getReceivedAnswer();
     public abstract void setReceivedAnswer(String s);
 
+    public abstract String getAnswer() ;
+
+   public abstract void setAnswer(String answer) ;
+
     //คำตอบที่ผู้เล่นตอบมา
 
 }

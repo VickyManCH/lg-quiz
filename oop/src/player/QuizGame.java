@@ -1,6 +1,6 @@
 package player;
 
-import item.answer.Answer;
+
 import item.base.BaseAnswer;
 import item.base.BaseQuestion;
 import item.base.BaseQuiz;
@@ -33,7 +33,10 @@ public class QuizGame {
         QUESTION = new ArrayList<>();
         HINT = new ArrayList<>();
         QUIZ_SIZE = 20;
+
+
     }
+
 
     public ArrayList<BaseQuiz> getQuestion() {
         return QUESTION;
@@ -108,38 +111,38 @@ public class QuizGame {
         }
     }
 
-    public void setUpQuestion(){
-        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บางพลัดกับบางรักเคยเดินหากันภายใน 10 นาทีใช่ไหม") );
-        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"จากข้อ 2 ตลอดเวลาหรือเป็นช่วงเวลา") );
-        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บางซื่อกับบางโพเคยเดินหากันภายใน 10 นาที กี่วิธี") );
-        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"จากข้อ 3 ได้ช่วงเวลาไหนบ้าง") );
-        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"ช่วงเวลานี้ปีไหน") );
-        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บ้านบางโพ บ้านบางคลาส บ้านบางเอิน บ้านบางรัก บ้านบางระจัน บ้านบางพลัด บ้านบางที่ บ้านบางซื่อ เคยเดินหากันได้ไหม") );
-        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บ้านบางคลาส คือ บ้านที่") );
-        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บ้านบางระจัน คือ บ้านที่") );
-        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บ้านบางซื่อ คือ บ้านที่") );
-        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บ้านบางโพ คือ บ้านที่") );
-        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บ้านบางพลัด คือ บ้านที่") );
-        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บ้านบางรัก คือ บ้านที่") );
-        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บ้านบางเอิน คือ บ้านที่") );
-        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บ้านบางที่ คือ บ้านที่") );
-    }
+//    public void setUpQuestion(){
+//        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บางพลัดกับบางรักเคยเดินหากันภายใน 10 นาทีใช่ไหม") );
+//        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"จากข้อ 2 ตลอดเวลาหรือเป็นช่วงเวลา") );
+//        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บางซื่อกับบางโพเคยเดินหากันภายใน 10 นาที กี่วิธี") );
+//        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"จากข้อ 3 ได้ช่วงเวลาไหนบ้าง") );
+//        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"ช่วงเวลานี้ปีไหน") );
+//        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บ้านบางโพ บ้านบางคลาส บ้านบางเอิน บ้านบางรัก บ้านบางระจัน บ้านบางพลัด บ้านบางที่ บ้านบางซื่อ เคยเดินหากันได้ไหม") );
+//        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บ้านบางคลาส คือ บ้านที่") );
+//        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บ้านบางระจัน คือ บ้านที่") );
+//        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บ้านบางซื่อ คือ บ้านที่") );
+//        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บ้านบางโพ คือ บ้านที่") );
+//        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บ้านบางพลัด คือ บ้านที่") );
+//        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บ้านบางรัก คือ บ้านที่") );
+//        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บ้านบางเอิน คือ บ้านที่") );
+//        QUESTION.add(new BaseQuestion(ChoiceType.CHOICE,"บ้านบางที่ คือ บ้านที่") );
+//    }
 
     public void setUpAnswer(){
-        ANSWER.add(new Answer("1") );
-        ANSWER.add(new Answer("1") );
-        ANSWER.add(new Answer("3") );
-        ANSWER.add(new Answer("0") );
-        ANSWER.add(new Answer("1") );
-        ANSWER.add(new Answer("1") );
-        ANSWER.add(new Answer("2") );
-        ANSWER.add(new Answer("5") );
-        ANSWER.add(new Answer("8") );
-        ANSWER.add(new Answer("1") );
-        ANSWER.add(new Answer("6") );
-        ANSWER.add(new Answer("4") );
-        ANSWER.add(new Answer("3") );
-        ANSWER.add(new Answer("7") );
+        ANSWER.add(new BaseAnswer("1",ChoiceType.CHOICE) );
+        ANSWER.add(new BaseAnswer("1",ChoiceType.CHOICE) );
+        ANSWER.add(new BaseAnswer("3",ChoiceType.CHOICE) );
+        ANSWER.add(new BaseAnswer("0",ChoiceType.CHOICE) );
+        ANSWER.add(new BaseAnswer("1",ChoiceType.CHOICE) );
+        ANSWER.add(new BaseAnswer("1",ChoiceType.CHOICE) );
+        ANSWER.add(new BaseAnswer("2",ChoiceType.CHOICE) );
+        ANSWER.add(new BaseAnswer("5",ChoiceType.CHOICE) );
+        ANSWER.add(new BaseAnswer("8",ChoiceType.CHOICE) );
+        ANSWER.add(new BaseAnswer("1",ChoiceType.CHOICE) );
+        ANSWER.add(new BaseAnswer("6",ChoiceType.CHOICE) );
+        ANSWER.add(new BaseAnswer("4",ChoiceType.CHOICE) );
+        ANSWER.add(new BaseAnswer("3",ChoiceType.CHOICE) );
+        ANSWER.add(new BaseAnswer("7",ChoiceType.CHOICE) );
     }
 
     public int QuizScore(BaseQuiz quiz) {

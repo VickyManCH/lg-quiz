@@ -11,6 +11,7 @@ public class BaseReceived extends BaseQuiz implements Hint {
     public BaseReceived(ChoiceType type, String received) {
         super(type);
         setChoiceType(type);
+        setReceivedAnswer(received);
     }
 
 
@@ -24,13 +25,24 @@ public class BaseReceived extends BaseQuiz implements Hint {
 
     @Override
     public String getReceivedAnswer() {
+        return received;
+    }
+
+    @Override
+    public void setReceivedAnswer(String received) {
+        this.received = received;
+    }
+
+    @Override
+    public String getAnswer() {
         return null;
     }
 
     @Override
-    public void setReceivedAnswer(String s) {
+    public void setAnswer(String answer) {
 
     }
+
 
     @Override
     public String getHint() {

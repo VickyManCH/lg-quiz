@@ -14,8 +14,9 @@ public class ChoiceQuiz extends BaseQuiz implements ChoiceNumber, hasPicture, Hi
     private ArrayList<String> ChoiceList;
 
     private String hint;
-    public ChoiceQuiz() {
+    public ChoiceQuiz(String choice) {
         super(ChoiceType.CHOICE);
+
 
     }
 
@@ -35,6 +36,16 @@ public class ChoiceQuiz extends BaseQuiz implements ChoiceNumber, hasPicture, Hi
 
     public void setReceivedAnswer(String receivedAnswer) {
         this.receivedAnswer = receivedAnswer;
+    }
+
+    @Override
+    public String getAnswer() {
+        return null;
+    }
+
+    @Override
+    public void setAnswer(String answer) {
+
     }
 
     public ArrayList<String> getChoiceList() {

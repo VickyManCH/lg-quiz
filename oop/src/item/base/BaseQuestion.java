@@ -10,11 +10,14 @@ public class BaseQuestion extends BaseQuiz implements Hint {
 
     public BaseQuestion(ChoiceType type, String question) {
         super(type);
+        setQuestion(question);
     }
 
     public String getQuestion() {
         return question;
     }
+
+
     public void setQuestion(String question) {
         this.question = question;
     }
@@ -26,6 +29,16 @@ public class BaseQuestion extends BaseQuiz implements Hint {
 
     @Override
     public void setReceivedAnswer(String s) {
+
+    }
+
+    @Override
+    public String getAnswer() {
+        return null;
+    }
+
+    @Override
+    public void setAnswer(String answer) {
 
     }
 

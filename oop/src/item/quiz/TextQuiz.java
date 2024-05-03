@@ -31,6 +31,16 @@ public class TextQuiz extends BaseQuiz implements hasPicture, Hint {
         this.receivedAnswer = receivedAnswer;
     }
 
+    @Override
+    public String getAnswer() {
+        return null;
+    }
+
+    @Override
+    public void setAnswer(String answer) {
+
+    }
+
 
     @Override
     public String getHint() {

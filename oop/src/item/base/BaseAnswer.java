@@ -2,13 +2,14 @@ package item.base;
 
 import item.usage.ChoiceType;
 
-public abstract class BaseAnswer {
+public class BaseAnswer extends BaseQuiz {
 
     private String question;
     private String answer;
 
-    public BaseAnswer(String answer) {
-        super();
+    public BaseAnswer(String answer, ChoiceType type) {
+        super(type);
+        setAnswer(answer);
 
     }
 
@@ -20,11 +21,42 @@ public abstract class BaseAnswer {
         this.question = question;
     }
 
+    @Override
+    public String getReceivedAnswer() {
+        return null;
+    }
 
-    public abstract String getAnswer() ;
+    @Override
+    public void setReceivedAnswer(String s) {
 
-    public abstract void setAnswer(String answer) ;
+    }
+
+//
+//    public abstract String getAnswer() ;
+//
+//    public abstract void setAnswer(String answer) ;
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
 
 
+    @Override
+    public String getHint() {
+        return null;
+    }
 
+    @Override
+    public void setHint(String hint) {
+
+    }
+
+    @Override
+    public boolean useHint() {
+        return false;
+    }
 }
