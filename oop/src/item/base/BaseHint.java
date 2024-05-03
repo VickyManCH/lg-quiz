@@ -15,17 +15,6 @@ public class BaseHint extends BaseQuiz implements Hint {
 
     }
 
-
-
-
-//
-//    public abstract String getAnswer() ;
-//
-//    public abstract void setAnswer(String answer) ;
-
-
-
-
     @Override
     public String getHint() {
         return hint;
@@ -44,23 +33,5 @@ public class BaseHint extends BaseQuiz implements Hint {
         this.useHint = useHint;
     }
 
-    @Override
-    public String getReceivedAnswer() {
-        return null;
-    }
 
-    @Override
-    public void setReceivedAnswer(String s) {
-
-    }
-
-    @Override
-    public String getAnswer() {
-        return null;
-    }
-
-    @Override
-    public void setAnswer(String answer) {
-
-    }
 }

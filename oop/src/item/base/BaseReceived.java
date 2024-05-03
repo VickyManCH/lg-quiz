@@ -3,9 +3,8 @@ package item.base;
 import item.usage.ChoiceType;
 import item.usage.Hint;
 
-public class BaseReceived extends BaseQuiz implements Hint {
+public abstract class BaseReceived extends BaseQuiz {
 
-    private String received;
     private ChoiceType choiceType;
 
     public BaseReceived(ChoiceType type, String received) {
@@ -22,50 +21,11 @@ public class BaseReceived extends BaseQuiz implements Hint {
         this.choiceType = choiceType;
     }
 
-    @Override
-    public String getReceivedAnswer() {
-        return received;
-    }
 
-    @Override
-    public void setReceivedAnswer(String received) {
-        this.received = received;
-    }
-
-    @Override
-    public String getAnswer() {
-        return null;
-    }
-
-    @Override
-    public void setAnswer(String answer) {
-
-    }
+    public abstract String getReceivedAnswer() ;
 
 
-    @Override
-    public String getHint() {
-        return null;
-    }
+    public abstract void setReceivedAnswer(String received) ;
 
-    @Override
-    public void setHint(String hint) {
-
-    }
-
-    @Override
-    public boolean isUseHint() {
-        return false;
-    }
-
-    @Override
-    public void setUseHint(boolean useHint) {
-
-    }
-
-
-
-
-    //คำตอบที่ผู้เล่นตอบมา
-
+    //หมายเหตุ received คือ คำตอบที่ผู้เล่นตอบมา
 }
