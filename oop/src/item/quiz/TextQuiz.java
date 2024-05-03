@@ -53,7 +53,14 @@ public class TextQuiz extends BaseQuiz implements hasPicture, Hint {
     }
 
     @Override
-    public boolean useHint() {
+    public boolean isUseHint() {
         return false;
     }
+
+    @Override
+    public void setUseHint(boolean useHint) {
+
+    }
+
+
 }

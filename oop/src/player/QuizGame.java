@@ -170,9 +170,9 @@ public class QuizGame {
 
             }
 
-            if (quiz.useHint()){
-                this.setScore(this.getScore() - 6);
-            }
+//            if (quiz.useHint()){
+//                this.setScore(this.getScore() - 6);
+//            }
 
         }
         return this.getScore();
@@ -182,16 +182,16 @@ public class QuizGame {
         if (this.getScore() >= 105){
             return "Legendary" ;
         }
-        else if (this.getScore() >= 80 && this.getScore() < 105){
+        else if (this.getScore() >= 70 && this.getScore() < 105){
             return "Diamond" ;
         }
-        else if (this.getScore() >= 55 && this.getScore() < 80){
+        else if (this.getScore() >= 45 && this.getScore() < 70){
             return "Gold" ;
         }
-        else if (this.getScore() >= 35 && this.getScore() < 55){
+        else if (this.getScore() >= 25 && this.getScore() < 45){
             return "Silver" ;
         }
-        else if (this.getScore() >= 10 && this.getScore() < 35){
+        else if (this.getScore() >= 10 && this.getScore() < 25){
             return "Bronze" ;
         }
         else {

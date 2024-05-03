@@ -28,19 +28,6 @@ public class Easy extends BaseQuiz {
     public void setAnswer(String answer) {
 
     }
-
-    @Override
-    public String getHint() {
-        return null;
-    }
-
-    @Override
-    public void setHint(String hint) {
-
-    }
-
-    @Override
-    public boolean useHint() {
-        return false;
-    }
 }
+
+

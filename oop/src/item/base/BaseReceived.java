@@ -10,7 +10,6 @@ public class BaseReceived extends BaseQuiz implements Hint {
 
     public BaseReceived(ChoiceType type, String received) {
         super(type);
-        setChoiceType(type);
         setReceivedAnswer(received);
     }
 
@@ -55,9 +54,16 @@ public class BaseReceived extends BaseQuiz implements Hint {
     }
 
     @Override
-    public boolean useHint() {
+    public boolean isUseHint() {
         return false;
     }
+
+    @Override
+    public void setUseHint(boolean useHint) {
+
+    }
+
+
 
 
     //คำตอบที่ผู้เล่นตอบมา

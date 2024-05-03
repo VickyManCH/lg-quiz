@@ -3,7 +3,7 @@ package item.base;
 import item.usage.ChoiceType;
 import item.usage.Hint;
 
-public abstract class BaseQuiz implements Hint {
+public abstract class BaseQuiz {
 
     private String question;
     private ChoiceType choiceType;

@@ -81,7 +81,14 @@ public class ChoiceQuiz extends BaseQuiz implements ChoiceNumber, hasPicture, Hi
     }
 
     @Override
-    public boolean useHint() {
+    public boolean isUseHint() {
         return false;
     }
+
+    @Override
+    public void setUseHint(boolean useHint) {
+
+    }
+
+
 }

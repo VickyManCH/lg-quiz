@@ -1,16 +1,14 @@
 package main;
 
 
-import item.base.BaseAnswer;
-import item.base.BaseQuiz;
-import item.base.BaseReceived;
+import item.base.*;
 import item.level.Easy;
 import item.level.Hard;
 import item.level.Medium;
 import item.quiz.ChoiceQuiz;
 import item.quiz.TextQuiz;
 import item.usage.ChoiceType;
-import item.base.BaseQuestion;
+
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
@@ -27,6 +25,8 @@ public class Main {
 
     private static final ArrayList<String[]>  CHOICELIST = new ArrayList<>();
 
+    private static final ArrayList<BaseHint> HINT = new ArrayList<>();
+
     private static int score ;
 
 
@@ -38,6 +38,7 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("======================================================================");
+        System.out.println(" ");
         System.out.println(" Welcome To Lg_Game");
         Scanner sc = new Scanner(System.in);
 
@@ -48,10 +49,15 @@ public class Main {
         setUpQuestion();
         setUpAnswer();
         setUpChoice();
+        setUpHint();
         int i = 0;
 
-
+        sc.nextLine();
         for (BaseQuiz quiz : QUESTION) {
+
+            System.out.println(" ");
+            System.out.println("---------------------------------------------");
+            System.out.println(" ");
 
             System.out.println( i+1 + ". " + quiz.getQuestion());
             if(i<6){
@@ -60,21 +66,33 @@ public class Main {
                 }
             }
 
+            System.out.println("if you want to see hint please type <0>");
 
             System.out.print("Your answer: ");
 
             String received = sc.nextLine();
-            RECEIVED.add(new BaseReceived(ChoiceType.CHOICE,received));
-//            quiz.setReceivedAnswer(received);
-//            System.out.println("Received answer: " + received);
+            if(!Objects.equals(received, "0")){
+                RECEIVED.add(new BaseReceived(ChoiceType.CHOICE,received));
+
+            }
+            else {
+                System.out.println("HINT : " + HINT.get(i).getHint());
+                System.out.print("Your answer: ");
+                HINT.get(i).setUseHint(true);
+                 received = sc.nextLine();
+                RECEIVED.add(new BaseReceived(ChoiceType.CHOICE,received));
+            }
+
+
             if (Objects.equals(RECEIVED.get(i).getReceivedAnswer(), ANSWER.get(i).getAnswer())){
                 System.out.print("Correct");
             }
             else {
                 System.out.print("Wrong");
             }
-            i++;
 
+
+            i++;
             sc.nextLine();
         }
         int score = QuizScore();
@@ -141,8 +159,14 @@ public class Main {
             if (Objects.equals(RECEIVED.get(i).getReceivedAnswer(), ANSWER.get(i).getAnswer())) {
                
                     setScore(getScore() + 5);
-                
 
+
+            }
+            if(HINT.get(i).isUseHint()){
+                setScore(getScore() - 3);
+            }
+            else {
+                setScore(getScore() + 1);
             }
 
 
@@ -152,7 +176,24 @@ public class Main {
         return getScore();
     }
 
+    public static void setUpHint(){
 
+        HINT.add(new BaseHint("dthdg",ChoiceType.CHOICE,false) );
+        HINT.add(new BaseHint("hgh",ChoiceType.CHOICE,false) );
+        HINT.add(new BaseHint("ghgdj",ChoiceType.CHOICE,false) );
+        HINT.add(new BaseHint("gjdgj",ChoiceType.CHOICE,false) );
+        HINT.add(new BaseHint("gjfgj",ChoiceType.CHOICE,false) );
+        HINT.add(new BaseHint("jfgjf",ChoiceType.CHOICE,false) );
+        HINT.add(new BaseHint("fgjfgj",ChoiceType.CHOICE,false) );
+        HINT.add(new BaseHint("gjdgjd",ChoiceType.CHOICE,false) );
+        HINT.add(new BaseHint("dgjdgf",ChoiceType.CHOICE,false) );
+        HINT.add(new BaseHint("dgjdgjfdjf",ChoiceType.CHOICE,false) );
+        HINT.add(new BaseHint("djgdgjjg",ChoiceType.CHOICE,false) );
+        HINT.add(new BaseHint("dgjdgj",ChoiceType.CHOICE,false) );
+        HINT.add(new BaseHint("dgjdj",ChoiceType.CHOICE,false) );
+        HINT.add(new BaseHint("gjddg",ChoiceType.CHOICE,false) );
+
+    }
     public static int getScore() {
         return score;
     }

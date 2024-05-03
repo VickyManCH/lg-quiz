@@ -54,7 +54,14 @@ public class BaseQuestion extends BaseQuiz implements Hint {
     }
 
     @Override
-    public boolean useHint() {
+    public boolean isUseHint() {
         return false;
     }
+
+    @Override
+    public void setUseHint(boolean useHint) {
+
+    }
+
+
 }

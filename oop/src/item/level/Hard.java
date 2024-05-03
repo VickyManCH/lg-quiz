@@ -28,18 +28,5 @@ public class Hard extends BaseQuiz {
 
     }
 
-    @Override
-    public String getHint() {
-        return null;
-    }
 
-    @Override
-    public void setHint(String hint) {
-
-    }
-
-    @Override
-    public boolean useHint() {
-        return false;
-    }
 }
