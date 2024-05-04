@@ -16,17 +16,20 @@ import java.util.Scanner;
 public class Main {
 
     private static ArrayList<BaseQuestion> QUESTION = new ArrayList<>();
+
     private static final ArrayList<BaseReceived> RECEIVED = new ArrayList<>();
 
     private static final ArrayList<BaseAnswer> ANSWER = new ArrayList<>();
 
-    private static final ArrayList<ChoiceQuiz> choiceList = new ArrayList<>();
+    private static ArrayList<BaseQuestion> questionRelease = new ArrayList<>();
 
-    private static final ArrayList<String[]>  CHOICELIST = new ArrayList<>();
+    private static final ArrayList<ChoiceQuiz>  CHOICELIST = new ArrayList<>();
 
     private static final ArrayList<BaseHint> HINT = new ArrayList<>();
 
     private static int score ;
+
+
 
 
 
@@ -49,20 +52,26 @@ public class Main {
             setUpChoice();
             setUpHint();
 
-        int i = 0;
+
 
         sc.nextLine();
+        int i=0;
 
-        for (BaseQuestion question : QUESTION) {
+       while(!questionRelease.isEmpty()) {
 
             System.out.println(" ");
             System.out.println("---------------------------------------------");
             System.out.println(" ");
-            System.out.println( i+1 + ". " + question.getQuestion());
+            System.out.println( i+1 + ". " + questionRelease.get(0).getQuestion());
 
             if(i<6){
-                for(int j=0 ; j<CHOICELIST.get(i).length ; j++){
-                    System.out.println(CHOICELIST.get(i)[j]);
+                for(int j=0 ; j<CHOICELIST.get(i).getChoiceNumber(); j++){
+                    switch (CHOICELIST.get(i).getChoiceNumber()) {
+                        case 2 -> System.out.println(CHOICELIST.get(i).getTwoChoiceList()[j]);
+                        case 3 -> System.out.println(CHOICELIST.get(i).getThreeChoiceList()[j]);
+                        case 4 -> System.out.println(CHOICELIST.get(i).getFourChoiceList()[j]);
+                    }
+
                 }
             }
 
@@ -73,7 +82,7 @@ public class Main {
 
             if(!Objects.equals(received, "0")){
 
-                if(question.getChoiceType() == ChoiceType.CHOICE){
+                if(questionRelease.get(0).getChoiceType() == ChoiceType.CHOICE){
                     RECEIVED.add(new ChoiceQuiz(received));
                 }
                 else{
@@ -89,7 +98,7 @@ public class Main {
 
                 received = sc.nextLine();
 
-                if(question.getChoiceType() == ChoiceType.CHOICE){
+                if(questionRelease.get(0).getChoiceType() == ChoiceType.CHOICE){
                     RECEIVED.add(new ChoiceQuiz(received));
                 }
                 else{
@@ -103,9 +112,9 @@ public class Main {
             else {
                 System.out.print("Wrong");
             }
-
+            
+            questionRelease.remove(0);
             i++;
-
             sc.nextLine();
         }
 
@@ -119,6 +128,7 @@ public class Main {
 
 
     public static void setUpQuestion(){
+
         QUESTION.add(new EasyQuestion(ChoiceType.CHOICE,"บางพลัดกับบางรักเคยเดินหากันภายใน 10 นาทีใช่ไหม") );
         QUESTION.add(new MediumQuestion(ChoiceType.CHOICE,"จากข้อ 2 ตลอดเวลาหรือเป็นช่วงเวลา") );
         QUESTION.add(new MediumQuestion(ChoiceType.CHOICE,"บางซื่อกับบางโพเคยเดินหากันภายใน 10 นาที กี่วิธี") );
@@ -134,9 +144,12 @@ public class Main {
         QUESTION.add(new MediumQuestion(ChoiceType.TEXT,"บ้านบางเอิน คือ บ้านที่") );
         QUESTION.add(new HardQuestion(ChoiceType.TEXT,"บ้านบางที่ คือ บ้านที่") );
 
+        questionRelease.addAll(QUESTION);
+
     }
 
     public static void setUpAnswer(){
+
         ANSWER.add(new BaseAnswer("1",ChoiceType.CHOICE) );
         ANSWER.add(new BaseAnswer("1",ChoiceType.CHOICE) );
         ANSWER.add(new BaseAnswer("3",ChoiceType.CHOICE) );
@@ -173,12 +186,28 @@ public class Main {
     }
 
     public static void setUpChoice(){
-        CHOICELIST.add(new String[]{"<1> เคย","<2> ไม่เคย"});
-        CHOICELIST.add(new String[]{"<1> ช่วงเวลา","<2> ตลอดเวลา"});
-        CHOICELIST.add(new String[]{"<1> 0","<2> 1 ","<3> 2"});
-        CHOICELIST.add(new String[]{"<1> ช่วงเวลาทั้ง 2 วิธี","<2> ตลอดเวลาทั้ง 2 วิธี","<3> ตลอดเวลา 1 วิธี","<4> ช่วงเวลา 1 วิธี"});
-        CHOICELIST.add(new String[]{"<1> 2024","<2> 2023","<3> 2022"});
-        CHOICELIST.add(new String[]{"<1> ได้","<2> ไม่ได้"});
+
+        ChoiceQuiz choiceQ1 = new ChoiceQuiz(" ");
+        ChoiceQuiz choiceQ2 = new ChoiceQuiz(" ");
+        ChoiceQuiz choiceQ3 = new ChoiceQuiz(" ");
+        ChoiceQuiz choiceQ4 = new ChoiceQuiz(" ");
+        ChoiceQuiz choiceQ5 = new ChoiceQuiz(" ");
+        ChoiceQuiz choiceQ6 = new ChoiceQuiz(" ");
+
+        choiceQ1.setTwoChoiceList("เคย","ไม่เคย");
+        choiceQ2.setTwoChoiceList("ช่วงเวลา","ตลอดเวลา");
+        choiceQ3.setThreeChoiceList("0","1","2");
+        choiceQ4.setFourChoiceList("ช่วงเวลาทั้ง 2 วิธี","ตลอดเวลาทั้ง 2 วิธี","ตลอดเวลา 1 วิธี","ช่วงเวลา 1 วิธี");
+        choiceQ5.setThreeChoiceList("2024","2023","2022");
+        choiceQ6.setTwoChoiceList("ได้","ไม่ได้");
+
+        CHOICELIST.add(choiceQ1);
+        CHOICELIST.add(choiceQ2);
+        CHOICELIST.add(choiceQ3);
+        CHOICELIST.add(choiceQ4);
+        CHOICELIST.add(choiceQ5);
+        CHOICELIST.add(choiceQ6);
+
     }
 
 
@@ -255,10 +284,18 @@ public class Main {
         Main.score = Math.max(score,0);
     }
 
-    public static String getQuestion (){
-        for(BaseQuestion question: QUESTION){
-            return question.getQuestion() ;
-        }
+    public static String getQuestion() {
+        while (!questionRelease.isEmpty()) {
+            String s = questionRelease.get(0).getQuestion();
+            questionRelease.remove(0);
+
+                return s;
+
+            }
         return null;
     }
+
+
+
+
 }
