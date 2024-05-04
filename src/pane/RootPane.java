@@ -36,7 +36,7 @@ public class RootPane extends VBox {
         getChildren().add(text);
         ///////////////////////
         Goto.setRootPane(this);
-        Goto.mainPage();
+        Goto.titleScreenPage();
     }
 
     public static RootPane getRootPane() {
