@@ -254,4 +254,11 @@ public class Main {
     public static void setScore(int score) {
         Main.score = Math.max(score,0);
     }
+
+    public static String getQuestion (){
+        for(BaseQuestion question: QUESTION){
+            return question.getQuestion() ;
+        }
+        return null;
+    }
 }
