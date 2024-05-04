@@ -12,7 +12,11 @@ import java.util.ArrayList;
 public class ChoiceQuiz extends BaseReceived implements ChoiceNumber, Hint {
 
     private String receivedAnswer;
-    private ArrayList<String> ChoiceList;
+    private String[] TwoChoiceList;
+    private String[] ThreeChoiceList;
+    private String[] FourChoiceList;
+
+    private int choiceNumber ;
 
     private  boolean useHint ;
 
@@ -22,9 +26,15 @@ public class ChoiceQuiz extends BaseReceived implements ChoiceNumber, Hint {
     }
 
     @Override
-    public int getChoiceNumber(int choiceNumber) {
+    public int getChoiceNumber() {
         return choiceNumber;
     }
+
+    @Override
+    public void setChoiceNumber(int choiceNumber) {
+        this.choiceNumber = choiceNumber;
+    }
+
 
     public String getReceivedAnswer() {
         return receivedAnswer;
@@ -34,16 +44,31 @@ public class ChoiceQuiz extends BaseReceived implements ChoiceNumber, Hint {
         this.receivedAnswer = receivedAnswer;
     }
 
-    public ArrayList<String> getChoiceList() {
-        return ChoiceList;
+    public String[] getTwoChoiceList() {
+        return TwoChoiceList;
+    }
+    public String[] getThreeChoiceList() {
+        return ThreeChoiceList;
+    }
+    public String[] getFourChoiceList() {
+        return FourChoiceList;
     }
 
-    public void addChoiceList(String choice) {
-        ChoiceList.add(choice);
+
+
+    public void setTwoChoiceList(String choice1,String choice2) {
+        this.TwoChoiceList = new String[] {choice1, choice2};
+        setChoiceNumber(2);
     }
 
-    public void setChoiceList(ArrayList<String> choiceList) {
-        ChoiceList = choiceList;
+    public void setThreeChoiceList(String choice1,String choice2,String choice3) {
+        this.ThreeChoiceList = new String[] {choice1, choice2, choice3};
+        setChoiceNumber(3);
+    }
+
+    public void setFourChoiceList(String choice1,String choice2,String choice3,String choice4) {
+        this.FourChoiceList = new String[] {choice1, choice2, choice3, choice4};
+        setChoiceNumber(4);
     }
 
 
