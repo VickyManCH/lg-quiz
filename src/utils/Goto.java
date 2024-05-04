@@ -5,6 +5,7 @@ import item.base.BaseQuestion;
 import item.level.EasyQuestion;
 import item.level.HardQuestion;
 import item.level.MediumQuestion;
+import item.quiz.ChoiceQuiz;
 import item.usage.ChoiceType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -20,6 +21,7 @@ import pane.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 
 public class Goto {
     private static RootPane rootPane;
@@ -27,6 +29,8 @@ public class Goto {
     private static MediaPlayer mediaPlayer;
 
     private static ArrayList<BaseQuestion> questions = new ArrayList<>();
+
+    private static ArrayList<ChoiceQuiz> choiceAnswers = new ArrayList<>();
 
     private static void setMediaPlayer(String musicPath){
         mediaPlayer = new MediaPlayer(new Media(new File(musicPath).toURI().toString()));
@@ -90,6 +94,10 @@ public class Goto {
     }
 
     public static void initQuiz(){
+
+        questions.clear();
+        choiceAnswers.clear();
+
         questions.add(new EasyQuestion(ChoiceType.CHOICE, "บางพลัดกับบางรักเคยเดินหากันภายใน 10 นาทีใช่ไหม", "เคย"));
         questions.add(new EasyQuestion(ChoiceType.CHOICE,"จากข้อ 1 ตลอดเวลาหรือเป็นช่วงเวลา", "ช่วงเวลา"));
         questions.add(new MediumQuestion(ChoiceType.CHOICE,"บางซื่อกับบางโพเคยเดินหากันภายใน 10 นาที กี่วิธี", "2"));
@@ -111,6 +119,25 @@ public class Goto {
 
         questions.addAll(shuffleQuestion);
 
+        ChoiceQuiz cq1 = new ChoiceQuiz("");
+        ChoiceQuiz cq2 = new ChoiceQuiz("");
+        ChoiceQuiz cq3 = new ChoiceQuiz("");
+        ChoiceQuiz cq4 = new ChoiceQuiz("");
+        ChoiceQuiz cq5 = new ChoiceQuiz("");
+        ChoiceQuiz cq6 = new ChoiceQuiz("");
+        cq1.addChoices("บางพลัดกับบางรักเคยเดินหากันภายใน 10 นาทีใช่ไหม", "เคย", "ไม่เคย");
+        cq2.addChoices("จากข้อ 1 ตลอดเวลาหรือเป็นช่วงเวลา", "ตลอดเวลา", "ช่วงเวลา");
+        cq3.addChoices("บางซื่อกับบางโพเคยเดินหากันภายใน 10 นาที กี่วิธี", "0", "1", "2", "3");
+        cq4.addChoices("จากข้อ 3 ได้ช่วงเวลาไหนบ้าง", "ตลอดเวลา 1 วิธี ช่วงเวลา 1 วิธี", "ตลอดเวลา 2 วิธี", "ช่วงเวลา 2 วิธี", "ไม่มีข้อถูก");
+        cq5.addChoices("ช่วงเวลานี้ปีไหน", "2021", "2022", "2023", "2024");
+        cq6.addChoices("บ้านบางโพ บ้านบางคลาส บ้านบางเอิน บ้านบางรัก บ้านบางระจัน บ้านบางพลัด บ้านบางที บ้านบางซื่อ เคยเดินหากันได้ไหม", "ไม่ได้", "ได้");
+        choiceAnswers.add(cq1);
+        choiceAnswers.add(cq2);
+        choiceAnswers.add(cq3);
+        choiceAnswers.add(cq4);
+        choiceAnswers.add(cq5);
+        choiceAnswers.add(cq6);
+
         quizPage();
     }
 
@@ -122,13 +149,20 @@ public class Goto {
     public static void quizPage(){
         clear();
         ArrayList<String> choices = new ArrayList<>();
-        choices.add("Good job!");
-        choices.add("Very gud!");
-        choices.add("Lightning McQueen");
-        choices.add("I'm bad");
+        if(questions.get(0).getChoiceType() == ChoiceType.CHOICE){
+            for(ChoiceQuiz c:choiceAnswers){
+                if(Objects.equals(c.getQuestion(), questions.get(0).getQuestion())){
+                    choices.addAll(c.getChoices());
+                }
+            }
+        }
         rootPane.getChildren().add(new HintButton());
         rootPane.getChildren().add(new QuizPane(questions.get(0).getQuestion()));
-        rootPane.getChildren().add(new ChoicePane(choices));
+        if(questions.get(0).getChoiceType() == ChoiceType.CHOICE){
+            rootPane.getChildren().add(new ChoicePane(choices));
+        } else {
+            rootPane.getChildren().add(new TextPane());
+        }
     }
 
     public static void checkQuiz(){

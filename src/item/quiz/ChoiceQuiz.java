@@ -12,7 +12,7 @@ public class ChoiceQuiz extends BaseReceived{
 
     private String question;
 
-    private ArrayList<String> choices;
+    private ArrayList<String> choices = new ArrayList<>();
 
     public ChoiceQuiz(String receivedAnswer) {
         super(ChoiceType.CHOICE,receivedAnswer);
