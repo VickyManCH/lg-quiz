@@ -17,7 +17,6 @@ public class TitleScreenPane extends VBox{
         exitButton.setTextFill(Color.DARKCYAN);
         exitButton.setPrefWidth(300);
         exitButton.setPrefHeight(100);
-        exitButton.setOpacity(0.5);
         exitButton.setOnMouseClicked(mouseEvent -> Platform.exit());
         Button playButton = new Button("Play");
         playButton.setBorder(new Border(new BorderStroke(Color.DARKCYAN,BorderStrokeStyle.SOLID,null,new BorderWidths(2))));
@@ -39,7 +38,7 @@ public class TitleScreenPane extends VBox{
             playButton.setPrefWidth(300);
             playButton.setPrefHeight(100);
         });
-        playButton.setOnMouseClicked(mouseEvent -> Goto.quizPage());
+        playButton.setOnMouseClicked(mouseEvent -> Goto.initQuiz());
         VBox.setMargin(playButton, new Insets(300,0,50,0));
         getChildren().add(playButton);
         getChildren().add(exitButton);

@@ -5,10 +5,14 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import utils.Goto;
+
+import java.io.File;
 
 import static utils.Goto.checkQuiz;
 
@@ -19,9 +23,13 @@ public class AnswerPane extends VBox {
         Color color = Color.RED;
         Button answerFrame = new Button();
         if(answer) {
+            MediaPlayer mediaPlayer = new MediaPlayer(new Media(new File("res/sound/correct.mp3").toURI().toString()));
+            mediaPlayer.play();
             color = Color.GREEN;
             answerFrame.setText("Correct! You got " + score + " points.");
         } else {
+            MediaPlayer mediaPlayer = new MediaPlayer(new Media(new File("res/sound/wrong.mp3").toURI().toString()));
+            mediaPlayer.play();
             answerFrame.setText("Wrong! The correct answer is " + correctChoice);
         }
         Background bg = new Background(new BackgroundFill(Color.WHITE, null, null));

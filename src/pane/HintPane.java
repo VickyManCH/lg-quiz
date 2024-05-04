@@ -20,9 +20,9 @@ public class HintPane extends VBox {
         setAlignment(Pos.CENTER);
         try {
             ImageView hintImg = new ImageView(new Image(new FileInputStream("res/lghint.jpg")));
-            getChildren().add(hintImg);
             hintImg.setFitWidth(900);
             hintImg.setFitHeight(600);
+            getChildren().add(hintImg);
         } catch (FileNotFoundException err) {
 
         }

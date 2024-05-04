@@ -2,7 +2,6 @@ package item.quiz;
 
 import item.base.BaseQuiz;
 import item.base.BaseReceived;
-import item.usage.ChoiceNumber;
 import item.usage.ChoiceType;
 import item.usage.Hint;
 import item.usage.hasPicture;

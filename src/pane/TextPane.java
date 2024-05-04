@@ -8,6 +8,7 @@ public class TextPane  extends VBox {
     public TextPane(){
         Button button=new Button("Submit");
         TextField textField=new TextField();
+        textField.setPromptText("ตอบเป็นตัวเลข");
         getChildren().add(textField);
         getChildren().add(button);
 

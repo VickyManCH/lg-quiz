@@ -30,7 +30,7 @@ public class ScorePane extends VBox {
         tryAgain.setTextFill(Color.DARKCYAN);
         tryAgain.setPrefWidth(400);
         tryAgain.setPrefHeight(100);
-        tryAgain.setOnMouseClicked(mouseEvent -> quizPage());
+        tryAgain.setOnMouseClicked(mouseEvent -> initQuiz());
         VBox.setMargin(tryAgain, new Insets(100, 0, 50, 0));
         Button exit = new Button("Return");
         exit.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,null,new BorderWidths(2))));

@@ -36,7 +36,7 @@ public class ChoicePane extends HBox {
             Button button = new Button(choice);
             button.setPrefWidth(w);
             button.setPrefHeight(h);
-            button.setOnMouseClicked(mouseEvent -> Goto.scorePage());
+            button.setOnMouseClicked(mouseEvent -> Goto.answerPage(true, "อารีฟ", 8));
             HBox.setMargin(button, new Insets( 0, margin, 0, margin));
             getChildren().add(button);
         }
