@@ -5,6 +5,7 @@ public interface Hint {
     String getHint();
     void setHint(String hint);
 
-    boolean useHint();
+    boolean isUseHint() ;
 
+    void setUseHint(boolean useHint);
 }

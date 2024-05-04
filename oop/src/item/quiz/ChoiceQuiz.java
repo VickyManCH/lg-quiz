@@ -1,6 +1,7 @@
 package item.quiz;
 
 import item.base.BaseQuiz;
+import item.base.BaseReceived;
 import item.usage.ChoiceNumber;
 import item.usage.ChoiceType;
 import item.usage.Hint;
@@ -8,26 +9,22 @@ import item.usage.hasPicture;
 
 import java.util.ArrayList;
 
-public class ChoiceQuiz extends BaseQuiz implements ChoiceNumber, hasPicture, Hint {
+public class ChoiceQuiz extends BaseReceived implements ChoiceNumber, Hint {
 
     private String receivedAnswer;
     private ArrayList<String> ChoiceList;
 
+    private  boolean useHint ;
+
     private String hint;
-    public ChoiceQuiz() {
-        super(ChoiceType.CHOICE);
-
+    public ChoiceQuiz(String receivedAnswer) {
+        super(ChoiceType.CHOICE,receivedAnswer);
     }
-
-
-
-
 
     @Override
     public int getChoiceNumber(int choiceNumber) {
         return choiceNumber;
     }
-
 
     public String getReceivedAnswer() {
         return receivedAnswer;
@@ -49,15 +46,6 @@ public class ChoiceQuiz extends BaseQuiz implements ChoiceNumber, hasPicture, Hi
         ChoiceList = choiceList;
     }
 
-    @Override
-    public boolean getHasPicture() {
-        return false;
-    }
-
-    @Override
-    public String getPictureName() {
-        return null;
-    }
 
     @Override
     public String getHint() {
@@ -66,11 +54,16 @@ public class ChoiceQuiz extends BaseQuiz implements ChoiceNumber, hasPicture, Hi
 
     @Override
     public void setHint(String hint) {
-        this.hint = hint ;
+        this.hint = hint;
     }
 
-    @Override
-    public boolean useHint() {
-        return false;
+    public boolean isUseHint() {
+        return useHint;
     }
+
+    public void setUseHint(boolean useHint) {
+        this.useHint = useHint;
+    }
+
+
 }

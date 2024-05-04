@@ -1,27 +1,19 @@
 package item.quiz;
 import item.base.BaseQuiz;
+import item.base.BaseReceived;
 import item.usage.Hint;
 import item.usage.hasPicture;
 import item.usage.ChoiceType;
-public class TextQuiz extends BaseQuiz implements hasPicture, Hint {
+public class TextQuiz extends BaseReceived implements Hint {
 
 
     private String receivedAnswer;
     private String hint;
-    public TextQuiz(){
-        super(ChoiceType.TEXT);
-    }
 
-    @Override
-    public boolean getHasPicture() {
-        return false;
+    private  boolean useHint ;
+    public TextQuiz(String receivedAnswer){
+        super(ChoiceType.TEXT,receivedAnswer);
     }
-
-    @Override
-    public String getPictureName() {
-        return null;
-    }
-
 
     public String getReceivedAnswer() {
         return receivedAnswer;
@@ -31,7 +23,6 @@ public class TextQuiz extends BaseQuiz implements hasPicture, Hint {
         this.receivedAnswer = receivedAnswer;
     }
 
-
     @Override
     public String getHint() {
         return hint;
@@ -39,11 +30,16 @@ public class TextQuiz extends BaseQuiz implements hasPicture, Hint {
 
     @Override
     public void setHint(String hint) {
-        this.hint = hint ;
+        this.hint = hint;
     }
 
-    @Override
-    public boolean useHint() {
-        return false;
+    public boolean isUseHint() {
+        return useHint;
     }
+
+    public void setUseHint(boolean useHint) {
+        this.useHint = useHint;
+    }
+
+
 }
