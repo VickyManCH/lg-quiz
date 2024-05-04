@@ -84,6 +84,10 @@ public class Goto {
         rootPane.getChildren().add(new NewBookPane());
     }
 
+    public static void initQuiz(){
+
+    }
+
     public static void quizPage(){
         clear();
         ArrayList<String> choices = new ArrayList<>();
@@ -107,5 +111,10 @@ public class Goto {
     public static void titleScreenPage(){
         clear();
         rootPane.getChildren().add(new TitleScreenPane());
+    }
+
+    public static void scorePage(){
+        clear();
+        rootPane.getChildren().add(new ScorePane());
     }
 }
