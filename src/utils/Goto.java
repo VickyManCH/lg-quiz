@@ -16,6 +16,7 @@ import javafx.scene.text.TextAlignment;
 import pane.*;
 
 import java.io.File;
+import java.util.ArrayList;
 
 public class Goto {
     private static RootPane rootPane;
@@ -85,7 +86,13 @@ public class Goto {
 
     public static void quizPage(){
         clear();
+        ArrayList<String> choices = new ArrayList<>();
+        choices.add("Good job!");
+        choices.add("Very gud!");
+        choices.add("Lightning McQueen");
+        choices.add("I'm bad");
         rootPane.getChildren().add(new QuizPane("How is Arif doing?"));
+        rootPane.getChildren().add(new ChoicePane(choices));
     }
 
     public static void titleScreenPage(){

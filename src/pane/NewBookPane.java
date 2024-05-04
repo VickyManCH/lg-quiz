@@ -15,6 +15,8 @@ public class NewBookPane extends GridPane {
     public NewBookPane(){
         setPadding(new Insets(12));
         setVgap(8);
+
+
         TextField name = input();
         TextField author = input();
         TextField rating = input();
