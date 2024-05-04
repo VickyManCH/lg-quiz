@@ -10,6 +10,6 @@ public class TextPane  extends VBox {
         TextField textField=new TextField();
         getChildren().add(textField);
         getChildren().add(button);
-        
+
     }
 }
