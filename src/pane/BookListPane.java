@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class BookListPane extends VBox {
 
     private static BookListPane instance;
-    private ArrayList<Book> books;
+    private final ArrayList<Book> books;
 
     private BookListPane() {
         books = new ArrayList<>();
