@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import utils.Goto;
 
 import java.util.ArrayList;
 //
@@ -13,11 +14,10 @@ public class ChoicePane extends HBox {
     public  ChoicePane(ArrayList<String> choices){
         setAlignment(Pos.CENTER);
         setPadding(new Insets(10));
-        //ArrayList<Button> buttons = new ArrayList<>();
         int count=choices.size();
-        int w = 0;
-        int h = 0;
-        int margin = 0;
+        int w = 100;
+        int h = 50;
+        int margin = 50;
 
         switch (count){
             case 2:{
@@ -36,6 +36,7 @@ public class ChoicePane extends HBox {
             Button button = new Button(choice);
             button.setPrefWidth(w);
             button.setPrefHeight(h);
+            button.setOnMouseClicked(mouseEvent -> Goto.answerPage(true, "Galand", 5));
             HBox.setMargin(button, new Insets( 0, margin, 0, margin));
             getChildren().add(button);
         }

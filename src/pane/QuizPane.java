@@ -19,12 +19,12 @@ public class QuizPane extends VBox {
         setSpacing(16);
         setPadding(new Insets(32,0,32,0));
         Button quizFrame = new Button(question);
-        quizFrame.setBackground(new Background(new BackgroundFill(Color.GREY,new CornerRadii(20),null)));
+        quizFrame.setBackground(new Background(new BackgroundFill(Color.DARKGREY,new CornerRadii(20),null)));
         quizFrame.setPrefWidth(1080);
         quizFrame.setPrefHeight(540);
+        quizFrame.setOpacity(0.8);
         quizFrame.setTextFill(Color.WHITE);
         quizFrame.setFont(Font.font("Lucida Fax", FontWeight.BOLD, 36));
-        quizFrame.setOpacity(0.4);
         setAlignment(Pos.CENTER);
         getChildren().add(quizFrame);
     }
