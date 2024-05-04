@@ -112,7 +112,7 @@ public class Main {
             else {
                 System.out.print("Wrong");
             }
-            
+
             questionRelease.remove(0);
             i++;
             sc.nextLine();
@@ -220,33 +220,37 @@ public class Main {
 
             if (Objects.equals(RECEIVED.get(i).getReceivedAnswer(), ANSWER.get(i).getAnswer())) {
 
-                if(QUESTION.get(i) instanceof EasyQuestion){
-                    setScore(getScore() + 5);
-                }
-                else if(QUESTION.get(i) instanceof MediumQuestion){
-                    setScore(getScore() + 10);
-                }
-                else if(QUESTION.get(i) instanceof HardQuestion){
-                    setScore(getScore() + 20);
-                }
-
-            }
-
-            else{
                 if(RECEIVED.get(i) instanceof ChoiceQuiz){
-                    setScore(getScore() - 5);
+
+                    if(QUESTION.get(i) instanceof EasyQuestion){
+                        setScore(getScore() + 5);
+                    }
+                    else if(QUESTION.get(i) instanceof MediumQuestion){
+                        setScore(getScore() + 10);
+                    }
+                    else if(QUESTION.get(i) instanceof HardQuestion){
+                        setScore(getScore() + 20);
+                    }
                 }
+
                 else if(RECEIVED.get(i) instanceof TextQuiz){
-                    setScore(getScore() - 3);
+
+                    if(QUESTION.get(i) instanceof EasyQuestion){
+                        setScore(getScore() + 8);
+                    }
+                    else if(QUESTION.get(i) instanceof MediumQuestion){
+                        setScore(getScore() + 18);
+                    }
+                    else if(QUESTION.get(i) instanceof HardQuestion){
+                        setScore(getScore() + 35);
+                    }
                 }
+
+
             }
 
-            if(HINT.get(i).isUseHint()){
-                setScore(getScore() - 6);
-            }
-            else {
-                setScore(getScore() + 2);
-            }
+
+
 
         }
         return getScore();
