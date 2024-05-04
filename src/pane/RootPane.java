@@ -30,9 +30,9 @@ public class RootPane extends VBox {
         setAlignment(Pos.TOP_CENTER);
         setSpacing(16);
         setPadding(new Insets(32,0,32,0));
-        Text text = new Text("Let's Read");
+        Text text = new Text("");
         text.setFill(Color.DARKCYAN);
-        text.setFont(Font.font("Verdana",FontWeight.BOLD,32));
+        text.setFont(Font.font("Verdana",FontWeight.BOLD,10));
         getChildren().add(text);
         ///////////////////////
         Goto.setRootPane(this);

@@ -1,9 +1,6 @@
 package utils;
 
 import item.Book;
-import javafx.application.Platform;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
@@ -95,6 +92,7 @@ public class Goto {
         choices.add("Very gud!");
         choices.add("Lightning McQueen");
         choices.add("I'm bad");
+        rootPane.getChildren().add(new HintButton());
         rootPane.getChildren().add(new QuizPane("How is Arif doing?"));
         rootPane.getChildren().add(new ChoicePane(choices));
     }
