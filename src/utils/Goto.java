@@ -85,6 +85,11 @@ public class Goto {
 
     }
 
+    public static void hintPage(){
+        clear();
+        rootPane.getChildren().add(new HintPane());
+    }
+
     public static void quizPage(){
         clear();
         ArrayList<String> choices = new ArrayList<>();
