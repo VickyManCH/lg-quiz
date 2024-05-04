@@ -2,6 +2,7 @@ package item.usage;
 
 public interface ChoiceNumber {
 
-    int getChoiceNumber(int choiceNumber);
+    int getChoiceNumber();
+    void setChoiceNumber(int choiceNumber);
 
 }
