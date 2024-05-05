@@ -1,19 +1,19 @@
 package item.quiz;
 
-import item.base.BaseReceived;
+import item.base.BaseQuiz;
 import item.usage.ChoiceType;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class ChoiceQuiz extends BaseReceived {
+public class ChoiceQuiz extends BaseQuiz {
 
     private String question;
 
     private ArrayList<String> choices = new ArrayList<>();
 
-    public ChoiceQuiz(String receivedAnswer) {
-        super(ChoiceType.CHOICE,receivedAnswer);
+    public ChoiceQuiz() {
+        super(ChoiceType.CHOICE);
     }
 
     public void addChoices(String question, String... choice){

@@ -1,6 +1,5 @@
 package item.quiz;
 import item.base.BaseQuiz;
-import item.base.BaseReceived;
 import item.usage.Hint;
 import item.usage.hasPicture;
 import item.usage.ChoiceType;

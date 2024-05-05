@@ -86,12 +86,12 @@ public class Goto {
 
         questions.addAll(shuffleQuestion);
 
-        ChoiceQuiz cq1 = new ChoiceQuiz("");
-        ChoiceQuiz cq2 = new ChoiceQuiz("");
-        ChoiceQuiz cq3 = new ChoiceQuiz("");
-        ChoiceQuiz cq4 = new ChoiceQuiz("");
-        ChoiceQuiz cq5 = new ChoiceQuiz("");
-        ChoiceQuiz cq6 = new ChoiceQuiz("");
+        ChoiceQuiz cq1 = new ChoiceQuiz();
+        ChoiceQuiz cq2 = new ChoiceQuiz();
+        ChoiceQuiz cq3 = new ChoiceQuiz();
+        ChoiceQuiz cq4 = new ChoiceQuiz();
+        ChoiceQuiz cq5 = new ChoiceQuiz();
+        ChoiceQuiz cq6 = new ChoiceQuiz();
         cq1.addChoices("บางพลัดกับบางรักเคยเดินหากันภายใน 10 นาทีใช่ไหม", "เคย", "ไม่เคย");
         cq2.addChoices("จากข้อ 1 ตลอดเวลาหรือเป็นช่วงเวลา", "ตลอดเวลา", "ช่วงเวลา");
         cq3.addChoices("บางซื่อกับบางโพเคยเดินหากันภายใน 10 นาที กี่วิธี", "0", "1", "2", "3");
