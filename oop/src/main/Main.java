@@ -6,7 +6,6 @@ import item.level.EasyQuestion;
 import item.level.HardQuestion;
 import item.level.MediumQuestion;
 import item.quiz.ChoiceQuiz;
-import item.quiz.TextQuiz;
 import item.usage.ChoiceType;
 
 import java.util.ArrayList;

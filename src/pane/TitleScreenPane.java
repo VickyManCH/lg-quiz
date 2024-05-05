@@ -5,6 +5,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -18,6 +19,10 @@ public class TitleScreenPane extends VBox{
     public TitleScreenPane(){
         setAlignment(Pos.CENTER);
         try {
+            ImageView logo = new ImageView(new Image(new FileInputStream("res/lglogo2.png")));
+            logo.setPreserveRatio(true);
+            logo.setFitHeight(450);
+            getChildren().add(logo);
             Button exitButton = new Button("Exit");
             exitButton.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream("res/choiceback.png")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100, 100, true, true, true, false))));
             exitButton.setFont(Font.font("Noto Sans Thai", FontWeight.BOLD, 36));
@@ -63,7 +68,7 @@ public class TitleScreenPane extends VBox{
                 }
             });
             playButton.setOnMouseClicked(mouseEvent -> Goto.initQuiz());
-            VBox.setMargin(playButton, new Insets(300,0,50,0));
+            VBox.setMargin(playButton, new Insets(100,0,50,0));
             getChildren().add(playButton);
             getChildren().add(exitButton);
         } catch (FileNotFoundException err){

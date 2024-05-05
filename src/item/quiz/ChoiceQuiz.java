@@ -8,8 +8,6 @@ import java.util.Collections;
 
 public class ChoiceQuiz extends BaseReceived {
 
-    private String receivedAnswer;
-
     private String question;
 
     private ArrayList<String> choices = new ArrayList<>();
@@ -34,14 +32,6 @@ public class ChoiceQuiz extends BaseReceived {
 
     public void setQuestion(String question) {
         this.question = question;
-    }
-
-    public String getReceivedAnswer() {
-        return receivedAnswer;
-    }
-
-    public void setReceivedAnswer(String receivedAnswer) {
-        this.receivedAnswer = receivedAnswer;
     }
 
 }

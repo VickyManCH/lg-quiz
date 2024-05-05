@@ -20,12 +20,6 @@ public class HardQuestion extends BaseQuestion implements hasPicture {
         super(type, question,answer);
     }
 
-    public HardQuestion(ChoiceType type, String question, String answer, String pictureName) {
-        super(type,question,answer);
-        hasPicture = true;
-        setPictureName(pictureName);
-    }
-
     public String getQuestion() {
         return question;
     }

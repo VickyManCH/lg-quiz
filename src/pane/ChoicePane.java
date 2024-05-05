@@ -13,7 +13,7 @@ import utils.Goto;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-//
+
 public class ChoicePane extends HBox {
     public  ChoicePane(ArrayList<String> choices){
         setAlignment(Pos.CENTER);

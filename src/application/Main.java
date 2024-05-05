@@ -14,7 +14,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-        // TODO: FILL CODE HERE
         Scene scene = new Scene(RootPane.getRootPane());
         scene.getStylesheets().add("application/font.css");
         stage.setFullScreen(true);

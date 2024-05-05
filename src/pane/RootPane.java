@@ -3,7 +3,6 @@ package pane;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -18,7 +17,6 @@ public class RootPane extends VBox {
     private static RootPane instance;
 
     private RootPane() {
-        // TODO: FILL CODE HERE
         Background bg;
         try {
             BackgroundImage bgImg = new BackgroundImage(new Image(new FileInputStream("res/quizback.png")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100, 100, true, true, true, true));
@@ -34,7 +32,7 @@ public class RootPane extends VBox {
         text.setFill(Color.DARKCYAN);
         text.setFont(Font.font("Verdana",FontWeight.BOLD,10));
         getChildren().add(text);
-        ///////////////////////
+
         Goto.setRootPane(this);
         Goto.titleScreenPage();
     }
