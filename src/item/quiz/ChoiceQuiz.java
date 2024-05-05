@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class ChoiceQuiz extends BaseReceived{
+public class ChoiceQuiz extends BaseReceived {
 
     private String receivedAnswer;
 

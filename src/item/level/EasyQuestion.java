@@ -10,12 +10,20 @@ public class EasyQuestion extends BaseQuestion implements hasPicture {
 
     private String answer;
 
-    private Boolean hasPicture;
+    private Boolean hasPicture = false;
+
+    private String pictureName;
 
     private final int SCORE = 1;
 
     public EasyQuestion(ChoiceType type, String question, String answer) {
         super(type,question,answer);
+    }
+
+    public EasyQuestion(ChoiceType type, String question, String answer, String pictureName) {
+        super(type,question,answer);
+        hasPicture = true;
+        setPictureName(pictureName);
     }
 
     @Override
@@ -28,6 +36,7 @@ public class EasyQuestion extends BaseQuestion implements hasPicture {
         this.answer = answer;
     }
 
+    @Override
     public int getScore(){
         return SCORE;
     }
@@ -42,12 +51,17 @@ public class EasyQuestion extends BaseQuestion implements hasPicture {
 
     @Override
     public boolean getHasPicture() {
-        return false;
+        return hasPicture;
     }
 
     @Override
     public String getPictureName() {
-        return null;
+        return pictureName;
+    }
+
+    @Override
+    public void setPictureName(String pictureName){
+        this.pictureName = pictureName;
     }
 }
 

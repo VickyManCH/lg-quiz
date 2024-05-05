@@ -6,8 +6,6 @@ import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 import pane.RootPane;
 
-import java.io.File;
-
 public class Main extends Application {
 
     public static void main(String[] args) {
@@ -18,6 +16,7 @@ public class Main extends Application {
     public void start(Stage stage) {
         // TODO: FILL CODE HERE
         Scene scene = new Scene(RootPane.getRootPane());
+        scene.getStylesheets().add("application/font.css");
         stage.setFullScreen(true);
         stage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         stage.setScene(scene);

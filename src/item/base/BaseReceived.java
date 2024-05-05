@@ -19,10 +19,10 @@ public abstract class BaseReceived extends BaseQuiz {
     }
 
 
-    public abstract String getReceivedAnswer() ;
+    public abstract String getReceivedAnswer();
 
 
-    public abstract void setReceivedAnswer(String received) ;
+    public abstract void setReceivedAnswer(String received);
 
     //หมายเหตุ received คือ คำตอบที่ผู้เล่นตอบมา
 }

@@ -7,6 +7,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,9 +29,28 @@ public class HintPane extends VBox {
 
         }
         Button back = new Button("Back");
-        back.setBorder(new Border(new BorderStroke(Color.DARKCYAN, BorderStrokeStyle.SOLID,null,new BorderWidths(2))));
-        back.setBackground(new Background(new BackgroundFill(Color.WHITE,null,null)));
-        back.setTextFill(Color.DARKCYAN);
+        try {
+            back.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream("res/choiceback.png")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100, 100, true, true, true, false))));
+        } catch (FileNotFoundException err) {
+
+        }
+        back.setOnMouseExited(mouseEvent -> {
+            try {
+                back.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream("res/choiceback.png")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100, 100, true, true, true, false))));
+                back.setTextFill(Color.BLACK);
+            } catch (FileNotFoundException err) {
+
+            }
+        });
+        back.setOnMouseEntered(mouseEvent -> {
+            try {
+                back.setBackground(new Background(new BackgroundImage(new Image(new FileInputStream("res/choiceback2.png")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100, 100, true, true, true, false))));
+                back.setTextFill(Color.WHITE);
+            } catch (FileNotFoundException err) {
+
+            }
+        });
+        back.setFont(Font.font("Noto Sans Thai", FontWeight.BOLD, 20));
         back.setPrefWidth(400);
         back.setPrefHeight(100);
         back.setOnMouseClicked(mouseEvent -> quizPage());

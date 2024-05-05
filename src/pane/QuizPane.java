@@ -1,5 +1,7 @@
 package pane;
 
+import item.base.BaseQuestion;
+import item.quiz.ChoiceQuiz;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -16,27 +18,31 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class QuizPane extends GridPane {
-    public QuizPane(String question){
+    public QuizPane(BaseQuestion question){
         setPadding(new Insets(32,0,32,0));
-        Button quizFrame = new Button(question);
+        Button quizFrame = new Button(question.getQuestion());
         quizFrame.setBackground(new Background(new BackgroundFill(Color.WHITE,new CornerRadii(20),null)));
         quizFrame.setPrefWidth(1080);
         quizFrame.setPrefHeight(540);
         quizFrame.setOpacity(0.8);
-        quizFrame.setFont(Font.font("Lucida Fax", FontWeight.BOLD, 36));
+        quizFrame.setFont(Font.font("Noto Sans Thai", FontWeight.BOLD, 36));
         quizFrame.setWrapText(true);
         setAlignment(Pos.CENTER);
 
-        try {
-            ImageView hintImg = new ImageView(new Image(new FileInputStream("res/lghint.jpg")));
-            quizFrame.setAlignment(Pos.TOP_CENTER);
-            hintImg.setPreserveRatio(true);
-            hintImg.setFitWidth(500);
-            GridPane.setMargin(hintImg, new Insets(100, 0, 0, 0));
-            GridPane.setHalignment(hintImg, HPos.CENTER);
-            getChildren().add(quizFrame);
-            getChildren().add(hintImg);
-        } catch (FileNotFoundException err) {
+        if(question.getHasPicture()){
+            try {
+                ImageView hintImg = new ImageView(new Image(new FileInputStream(question.getPictureName())));
+                quizFrame.setAlignment(Pos.TOP_CENTER);
+                hintImg.setPreserveRatio(true);
+                hintImg.setFitWidth(500);
+                GridPane.setMargin(hintImg, new Insets(100, 0, 0, 0));
+                GridPane.setHalignment(hintImg, HPos.CENTER);
+                getChildren().add(quizFrame);
+                getChildren().add(hintImg);
+            } catch (FileNotFoundException err) {
+                getChildren().add(quizFrame);
+            }
+        } else {
             getChildren().add(quizFrame);
         }
     }

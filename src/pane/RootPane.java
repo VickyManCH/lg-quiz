@@ -21,7 +21,7 @@ public class RootPane extends VBox {
         // TODO: FILL CODE HERE
         Background bg;
         try {
-            BackgroundImage bgImg = new BackgroundImage(new Image(new FileInputStream("res/quizback2.png")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100, 100, true, true, true, true));
+            BackgroundImage bgImg = new BackgroundImage(new Image(new FileInputStream("res/quizback.png")), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100, 100, true, true, true, true));
             bg = new Background(bgImg);
         } catch (FileNotFoundException err) {
             bg = new Background(new BackgroundFill(Color.WHITE, null, null));

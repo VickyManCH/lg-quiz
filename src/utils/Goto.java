@@ -32,6 +32,10 @@ public class Goto {
 
     private static ArrayList<ChoiceQuiz> choiceAnswers = new ArrayList<>();
 
+    private static int yourScore = 0;
+
+    private static int totalScore = 0;
+
     private static void setMediaPlayer(String musicPath){
         mediaPlayer = new MediaPlayer(new Media(new File(musicPath).toURI().toString()));
     }
@@ -94,9 +98,12 @@ public class Goto {
     }
 
     public static void initQuiz(){
+        music("res/music/quizmusic.mp3");
 
         questions.clear();
         choiceAnswers.clear();
+        yourScore = 0;
+        totalScore = 0;
 
         questions.add(new EasyQuestion(ChoiceType.CHOICE, "บางพลัดกับบางรักเคยเดินหากันภายใน 10 นาทีใช่ไหม", "เคย"));
         questions.add(new EasyQuestion(ChoiceType.CHOICE,"จากข้อ 1 ตลอดเวลาหรือเป็นช่วงเวลา", "ช่วงเวลา"));
@@ -106,15 +113,15 @@ public class Goto {
         shuffleQuestion.add(new EasyQuestion(ChoiceType.CHOICE,"ช่วงเวลานี้ปีไหน", "2024"));
         shuffleQuestion.add(new EasyQuestion(ChoiceType.CHOICE,"บ้านบางโพ บ้านบางคลาส บ้านบางเอิน บ้านบางรัก บ้านบางระจัน บ้านบางพลัด บ้านบางที บ้านบางซื่อ เคยเดินหากันได้ไหม", "ได้"));
         shuffleQuestion.add(new EasyQuestion(ChoiceType.TEXT,"บ้านบางคลาส คือ บ้านที่", "2"));
-        shuffleQuestion.add(new EasyQuestion(ChoiceType.TEXT,"บ้านบางระจัน คือ บ้านที่", "5"));
-        shuffleQuestion.add(new EasyQuestion(ChoiceType.TEXT,"บ้านบางซื่อ คือ บ้านที่", "8"));
-        shuffleQuestion.add(new EasyQuestion(ChoiceType.TEXT,"บ้านบางโพ คือ บ้านที่", "1"));
-        shuffleQuestion.add(new EasyQuestion(ChoiceType.TEXT,"บ้านบางพลัด คือ บ้านที่", "6"));
-        shuffleQuestion.add(new EasyQuestion(ChoiceType.TEXT,"บ้านบางรัก คือ บ้านที่", "4"));
+        shuffleQuestion.add(new EasyQuestion(ChoiceType.TEXT,"บ้านบางระจัน คือ บ้านที่", "5", "res/bangrajan.jpg"));
+        shuffleQuestion.add(new EasyQuestion(ChoiceType.TEXT,"บ้านบางซื่อ คือ บ้านที่", "8", "res/bangsue.jpg"));
+        shuffleQuestion.add(new EasyQuestion(ChoiceType.TEXT,"บ้านบางโพ คือ บ้านที่", "1", "res/bangpho.jpg"));
+        shuffleQuestion.add(new EasyQuestion(ChoiceType.TEXT,"บ้านบางพลัด คือ บ้านที่", "6", "res/bangplad.jpg"));
+        shuffleQuestion.add(new EasyQuestion(ChoiceType.TEXT,"บ้านบางรัก คือ บ้านที่", "4", "res/bangrak.jpg"));
         shuffleQuestion.add(new EasyQuestion(ChoiceType.TEXT,"บ้านบางเอิน คือ บ้านที่", "3"));
-        shuffleQuestion.add(new EasyQuestion(ChoiceType.TEXT,"บ้านบางที คือ บ้านที่", "2"));
-        shuffleQuestion.add(new MediumQuestion(ChoiceType.TEXT,"วันที่ตื่นเต้นมากที่สุด ของค่ายลานเกียร์คือวันที่เท่าไหร่", "4"));
-        shuffleQuestion.add(new HardQuestion(ChoiceType.TEXT,"ค่ายลานเกียร์มีกี่ฝ่าย", "17"));
+        shuffleQuestion.add(new EasyQuestion(ChoiceType.TEXT,"บ้านบางที คือ บ้านที่", "7"));
+        shuffleQuestion.add(new MediumQuestion(ChoiceType.TEXT,"วันที่ตื่นเต้นมากที่สุด ของค่ายลานเกียร์คือวันที่เท่าไหร่", "4", "res/lghint.jpg"));
+        shuffleQuestion.add(new HardQuestion(ChoiceType.TEXT,"ค่ายลานเกียร์มีกี่ฝ่าย", "11"));
         Collections.shuffle(shuffleQuestion);
 
         questions.addAll(shuffleQuestion);
@@ -156,8 +163,8 @@ public class Goto {
                 }
             }
         }
-        rootPane.getChildren().add(new HintButton());
-        rootPane.getChildren().add(new QuizPane(questions.get(0).getQuestion()));
+        rootPane.getChildren().add(new HintButtonPane());
+        rootPane.getChildren().add(new QuizPane(questions.get(0)));
         if(questions.get(0).getChoiceType() == ChoiceType.CHOICE){
             rootPane.getChildren().add(new ChoicePane(choices));
         } else {
@@ -172,6 +179,17 @@ public class Goto {
         else quizPage();
     }
 
+    public static void checkAnswer(String choice){
+        clear();
+        totalScore += questions.get(0).getScore();
+        Boolean answer = false;
+        if(choice.equals(questions.get(0).getAnswer())){
+            answer = true;
+            yourScore += questions.get(0).getScore();
+        }
+        answerPage(answer, questions.get(0).getAnswer(), questions.get(0).getScore());
+    }
+
     public static void answerPage(Boolean answer, String correctChoice, int score){
         clear();
         rootPane.getChildren().add(new AnswerPane(answer, correctChoice, score));
@@ -179,11 +197,13 @@ public class Goto {
 
     public static void titleScreenPage(){
         clear();
+        music("res/music/titlemusic.mp3");
         rootPane.getChildren().add(new TitleScreenPane());
     }
 
     public static void scorePage(){
         clear();
-        rootPane.getChildren().add(new ScorePane());
+        music("res/music/scoremusic.mp3");
+        rootPane.getChildren().add(new ScorePane(yourScore, totalScore));
     }
 }
